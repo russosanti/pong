@@ -206,7 +206,7 @@ function love.update(dt)
 
             -- if we've reached a score of 10, the game is over; set the
             -- state to done so we can show the victory message
-            if player2Score == 10 then
+            if player2Score == 11 then
                 winningPlayer = 2
                 gameState = 'done'
             else
@@ -221,7 +221,7 @@ function love.update(dt)
             player1Score = player1Score + 1
             sounds['score']:play()
 
-            if player1Score == 10 then
+            if player1Score == 11 then
                 winningPlayer = 1
                 gameState = 'done'
             else
@@ -243,25 +243,13 @@ function love.update(dt)
         player1.dy = 0
     end
 
-    -- player 2 AI update
-    -- If the ball is moving towards the player, track its y position; otherwise,
-    -- return to the center of the screen
-    if ball.dx > 0 then
-        if player2:centerCoordinate() == math.floor(ball.y) then
-            player2.dy = 0
-        elseif player2:centerCoordinate() > math.floor(ball.y) then
-            player2.dy = -PADDLE_SPEED
-        else
-            player2.dy = PADDLE_SPEED
-        end
+    -- player 1
+    if love.keyboard.isDown('up') then
+        player2.dy = -PADDLE_SPEED
+    elseif love.keyboard.isDown('down') then
+        player2.dy = PADDLE_SPEED
     else
-        if player2:centerCoordinate() == math.floor(VIRTUAL_HEIGHT / 2) then
-            player2.dy = 0
-        elseif player2:centerCoordinate() > math.floor(VIRTUAL_HEIGHT / 2) then
-            player2.dy = -PADDLE_SPEED
-        else
-            player2.dy = PADDLE_SPEED
-        end
+        player2.dy = 0
     end
 
 
