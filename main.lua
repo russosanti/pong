@@ -243,7 +243,9 @@ function love.update(dt)
         player1.dy = 0
     end
 
-    -- player 2
+    -- player 2 AI update
+    -- If the ball is moving towards the player, track its y position; otherwise,
+    -- return to the center of the screen
     if ball.dx > 0 then
         if player2:centerCoordinate() == math.floor(ball.y) then
             player2.dy = 0
