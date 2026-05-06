@@ -206,7 +206,7 @@ function love.update(dt)
 
             -- if we've reached a score of 10, the game is over; set the
             -- state to done so we can show the victory message
-            if player2Score == 10 then
+            if player2Score == 11 then
                 winningPlayer = 2
                 gameState = 'done'
             else
@@ -221,7 +221,7 @@ function love.update(dt)
             player1Score = player1Score + 1
             sounds['score']:play()
 
-            if player1Score == 10 then
+            if player1Score == 11 then
                 winningPlayer = 1
                 gameState = 'done'
             else
